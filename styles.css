@@ -56,6 +56,7 @@ h1, h2, h3 {
     font-family: 'Playfair Display', serif;
     font-size: 1.5rem;
     color: var(--accent-color);
+    white-space: nowrap;
 }
 
 .nav-links {
@@ -105,7 +106,8 @@ h1, h2, h3 {
     position: relative;
     z-index: 2;
     padding: 2rem;
-    max-width: 800px;
+    max-width: 1000px;
+    width: 90%;
     margin: 0 auto;
 }
 
@@ -113,6 +115,7 @@ h1, h2, h3 {
     font-size: 4rem;
     margin-bottom: 0.5rem;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    white-space: nowrap;
 }
 
 .hero .subtitle-main {
