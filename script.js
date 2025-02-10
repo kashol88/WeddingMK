@@ -104,4 +104,37 @@ attendanceRadios.forEach(radio => {
             });
         }
     });
+});
+
+// Mobile menu functionality
+const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+const mobileMenu = document.querySelector('.mobile-menu');
+
+mobileMenuBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('active');
+    mobileMenuBtn.querySelector('i').classList.toggle('fa-bars');
+    mobileMenuBtn.querySelector('i').classList.toggle('fa-times');
+});
+
+// Close mobile menu when clicking a link
+document.querySelectorAll('.mobile-nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+        mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+        mobileMenuBtn.querySelector('i').classList.remove('fa-times');
+    });
+});
+
+// Close mobile menu when scrolling
+let mobileMenuLastScroll = 0;
+window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset;
+    
+    if (currentScroll > mobileMenuLastScroll) {
+        mobileMenu.classList.remove('active');
+        mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+        mobileMenuBtn.querySelector('i').classList.remove('fa-times');
+    }
+    
+    mobileMenuLastScroll = currentScroll;
 }); 

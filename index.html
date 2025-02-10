@@ -8,27 +8,42 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://kit.fontawesome.com/your-code.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <nav class="navbar">
         <div class="container">
             <div class="logo">K & Partner</div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
             <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#schedule">Schedule</a></li>
-                <li><a href="#venue">Venue</a></li>
+                <li><a href="#home">Hem</a></li>
+                <li><a href="#schedule">Schema</a></li>
+                <li><a href="#venue">Plats</a></li>
                 <li><a href="#info">Information</a></li>
-                <li><a href="#rsvp" class="rsvp-button">RSVP</a></li>
+                <li><a href="#rsvp" class="rsvp-button">OSA</a></li>
             </ul>
         </div>
     </nav>
 
+    <div class="mobile-menu">
+        <ul class="mobile-nav-links">
+            <li><a href="#home">Hem</a></li>
+            <li><a href="#schedule">Schema</a></li>
+            <li><a href="#venue">Plats</a></li>
+            <li><a href="#info">Information</a></li>
+            <li><a href="#rsvp" class="rsvp-button">OSA</a></li>
+        </ul>
+    </div>
+
     <section id="home" class="hero">
         <div class="container">
-            <h1>We're Getting Married!</h1>
-            <p class="date">Save the Date</p>
-            <p class="location">Location Name</p>
+            <h1>K & Partner</h1>
+            <p class="date">22-23 AUGUSTI 2024</p>
+            <p class="location">Tingsvägen 1, Harplinge</p>
+            <p class="subtitle">Vi längtar efter att få fira med dig!</p>
         </div>
     </section>
 
@@ -36,16 +51,37 @@
         <div class="container">
             <h2>Schedule</h2>
             <div class="timeline">
-                <!-- Timeline content will be styled with CSS -->
-                <div class="timeline-item">
-                    <h3>Ceremony</h3>
-                    <p>Time and details</p>
+                <div class="day-header">
+                    <h3>Day 1 - 22 Augusti</h3>
                 </div>
                 <div class="timeline-item">
-                    <h3>Reception</h3>
-                    <p>Time and details</p>
+                    <h3>13:00</h3>
+                    <p>Välkomna!</p>
                 </div>
-                <!-- Add more timeline items as needed -->
+                <div class="timeline-item">
+                    <h3>13:30</h3>
+                    <p>Welcome Drinks</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>15:00</h3>
+                    <p>Middag & Festligheter</p>
+                </div>
+                
+                <div class="day-header">
+                    <h3>Day 2 - 23 Augusti</h3>
+                </div>
+                <div class="timeline-item">
+                    <h3>13:00</h3>
+                    <p>Välkomna tillbaka!</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>13:30</h3>
+                    <p>Welcome Drinks</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>15:00</h3>
+                    <p>Middag & Festligheter</p>
+                </div>
             </div>
         </div>
     </section>
@@ -55,9 +91,8 @@
             <h2>Venue & Directions</h2>
             <div class="venue-info">
                 <div class="map">
-                    <!-- Replace with your Google Maps embed code -->
                     <iframe 
-                        src="https://www.google.com/maps/embed?pb=YOUR-EMBED-CODE"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2180.930584386882!2d12.67557687680173!3d56.74447627335055!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4651c7c889b5f8b9%3A0x7f2c93ef8f6f7a2a!2sTingsv%C3%A4gen%201%2C%20310%2041%20Harplinge!5e0!3m2!1sen!2sse!4v1707550444544!5m2!1sen!2sse"
                         width="100%" 
                         height="450" 
                         style="border:0;" 
@@ -65,9 +100,58 @@
                         loading="lazy">
                     </iframe>
                 </div>
-                <div class="directions">
-                    <h3>How to Get There</h3>
-                    <p>Detailed directions and transportation information...</p>
+                <div class="venue-details">
+                    <h3>Plats</h3>
+                    <p>Bröllopet äger rum hemma hos oss i två vackra cirkustält där vi kommer att äta, dricka och fira tillsammans!</p>
+                    <p><strong>Adress:</strong> Tingsvägen 1, Harplinge</p>
+                    <div class="venue-features">
+                        <div class="feature">
+                            <i class="fas fa-tent"></i>
+                            <p>Två festliga cirkustält</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-glass-cheers"></i>
+                            <p>Välkomstdrink</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-music"></i>
+                            <p>Underhållning & Tal</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="circus" class="section special-section">
+        <div class="container">
+            <h2>Our Magical Circus Tents</h2>
+            <div class="circus-content">
+                <div class="circus-text">
+                    <p class="highlight-text">Step into our enchanting circus tents, where magic meets celebration in a truly unique wedding experience.</p>
+                    <div class="tent-features">
+                        <div class="tent-feature">
+                            <i class="fas fa-tent"></i>
+                            <h3>Two Grand Tents</h3>
+                            <p>Spacious circus tents creating the perfect atmosphere for dining and celebration</p>
+                        </div>
+                        <div class="tent-feature">
+                            <i class="fas fa-star"></i>
+                            <h3>Magical Atmosphere</h3>
+                            <p>A whimsical setting for performances, speeches, and unforgettable moments</p>
+                        </div>
+                        <div class="tent-feature">
+                            <i class="fas fa-glass-cheers"></i>
+                            <h3>Festive Space</h3>
+                            <p>Dedicated areas for dining, dancing, and creating memories together</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="circus-decoration">
+                    <div class="decoration-element"><i class="fas fa-star"></i></div>
+                    <div class="decoration-element"><i class="fas fa-moon"></i></div>
+                    <div class="decoration-element"><i class="fas fa-sparkles"></i></div>
+                    <div class="decoration-element"><i class="fas fa-flag"></i></div>
                 </div>
             </div>
         </div>
@@ -78,20 +162,40 @@
             <h2>Important Information</h2>
             <div class="info-grid">
                 <div class="info-card">
+                    <i class="fas fa-tshirt"></i>
                     <h3>Dress Code</h3>
-                    <p>Details about the dress code...</p>
+                    <p>Festive summer attire! Think colorful and comfortable clothing suitable for a garden celebration. The event will take place outdoors in our circus tents, so choose appropriate footwear.</p>
                 </div>
                 <div class="info-card">
+                    <i class="fas fa-bed"></i>
                     <h3>Accommodation</h3>
-                    <p>Information about nearby hotels...</p>
+                    <p>For our out-of-town guests, we recommend booking accommodations in Harplinge or nearby Halmstad. A list of recommended hotels and B&Bs will be provided upon RSVP.</p>
                 </div>
                 <div class="info-card">
+                    <i class="fas fa-gift"></i>
                     <h3>Gifts</h3>
-                    <p>Information about gift preferences...</p>
+                    <p>Your presence is our greatest gift! However, if you wish to give something, we will provide gift suggestions upon RSVP. We appreciate your thoughtfulness.</p>
                 </div>
                 <div class="info-card">
+                    <i class="fas fa-envelope"></i>
                     <h3>Contact</h3>
-                    <p>Toastmaster contact information...</p>
+                    <p>Questions about the celebration? Our toastmaster will be happy to help! Contact details will be shared after your RSVP confirmation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="section">
+        <div class="container">
+            <h2>Our Story</h2>
+            <div class="photo-grid">
+                <div class="photo-card">
+                    <img src="images/MajaIHus.jpg" alt="Beautiful moments together" class="gallery-img">
+                    <div class="photo-caption">Our Sweet Home</div>
+                </div>
+                <div class="photo-card">
+                    <img src="images/StretchPortugal.jpg" alt="Adventures together" class="gallery-img">
+                    <div class="photo-caption">Adventures in Portugal</div>
                 </div>
             </div>
         </div>
