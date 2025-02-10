@@ -48,7 +48,8 @@ h1, h2, h3 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem var(--spacing);
+    height: 100%;
+    padding: 0 var(--spacing);
 }
 
 .logo {
@@ -89,40 +90,37 @@ h1, h2, h3 {
 /* Hero Section */
 .hero {
     position: relative;
-    height: calc(100vh - 60px);
-    margin-top: 0;
+    min-height: 100vh;
+    padding-top: 60px;
     background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
                 url('images/TillsammansBubbel.jpg') center/cover;
     display: flex;
     align-items: center;
     text-align: center;
     color: white;
-    border-radius: 0;
-    overflow: hidden;
-}
-
-.hero::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 150px;
-    background: linear-gradient(to top, rgba(252, 250, 249, 1), transparent);
+    margin-top: 0;
 }
 
 .hero .container {
     position: relative;
-    z-index: 1;
+    z-index: 2;
     padding: 2rem;
     max-width: 800px;
     margin: 0 auto;
 }
 
 .hero h1 {
-    font-size: 4.5rem;
-    margin-bottom: 1.5rem;
+    font-size: 4rem;
+    margin-bottom: 0.5rem;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hero .subtitle-main {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    font-family: 'Playfair Display', serif;
+    font-weight: normal;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 .hero .date {
@@ -532,9 +530,12 @@ input[type="checkbox"] {
 /* Photo Gallery */
 .photo-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
+    grid-template-columns: repeat(2, minmax(250px, 400px));
+    gap: 3rem;
+    margin: 2rem auto;
+    max-width: 900px;
+    padding: 0 1rem;
+    justify-content: center;
 }
 
 .photo-card {
@@ -543,18 +544,20 @@ input[type="checkbox"] {
     overflow: hidden;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
+    aspect-ratio: 3/4;
+    background: var(--secondary-color);
+}
+
+.gallery-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
 }
 
 .photo-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
-}
-
-.gallery-img {
-    width: 100%;
-    height: 400px;
-    object-fit: cover;
-    transition: transform 0.3s ease;
 }
 
 .photo-card:hover .gallery-img {
@@ -566,11 +569,12 @@ input[type="checkbox"] {
     bottom: 0;
     left: 0;
     right: 0;
-    padding: 1rem;
-    background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+    padding: 1.2rem;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
     color: white;
     font-family: 'Playfair Display', serif;
     text-align: center;
+    font-size: 1.2rem;
     transform: translateY(100%);
     transition: transform 0.3s ease;
 }
@@ -580,13 +584,20 @@ input[type="checkbox"] {
 }
 
 @media (max-width: 768px) {
-    .gallery-img {
-        height: 300px;
+    .photo-grid {
+        grid-template-columns: minmax(250px, 400px);
+        gap: 2rem;
+    }
+    
+    .photo-card {
+        aspect-ratio: 3/4;
     }
     
     .photo-caption {
         transform: translateY(0);
-        font-size: 0.9rem;
+        padding: 1rem;
+        font-size: 1.1rem;
+        background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
     }
 }
 
