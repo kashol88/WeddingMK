@@ -6,6 +6,11 @@
 }
 
 @media (max-width: 900px) {
+    .custom-form {
+        padding: 1.2rem;
+        max-width: 98vw;
+    }
+
   .mobile-menu-btn {
     display: block !important;
     position: absolute;
