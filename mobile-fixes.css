@@ -1,5 +1,10 @@
 
 /* --- Mobile menu fixes --- */
+.mobile-menu,
+.mobile-menu-btn {
+  display: none;
+}
+
 @media (max-width: 900px) {
   .mobile-menu-btn {
     display: block !important;
