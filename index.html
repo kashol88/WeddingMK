@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<!-- Deployment trigger: 2024-02-10 -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Wedding Celebration</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://kit.fontawesome.com/your-code.js" crossorigin="anonymous"></script>
+    <style>
+        :root {
+            --primary-color: #4a6b8a;
+            --secondary-color: #e8c4a8;
+            --accent-color: #d4a373;
+            --text-color: #333;
+            --light-bg: #f8f9fa;
+            --transition-speed: 0.3s;
+        }
+
+        /* Add smooth transitions */
+        .section {
+            transition: transform var(--transition-speed) ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Update existing styles with new color scheme */
+        .help-card, .info-card, .feature {
+            background: var(--light-bg);
+            border: 1px solid var(--secondary-color);
+            transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+        }
+
+        .help-card:hover, .info-card:hover, .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* New Guest Book Section */
+        .guest-book {
+            background: var(--light-bg);
+            padding: 30px;
+            border-radius: 10px;
+            margin: 30px 0;
+        }
+
+        .guest-book-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .guest-book-entries {
+            margin-top: 30px;
+        }
+
+        .guest-entry {
+            background: white;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* Photo Gallery Section */
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform var(--transition-speed) ease;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition-speed) ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Lazy loading for images */
+        img[loading="lazy"] {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        img[loading="lazy"].loaded {
+            opacity: 1;
+        }
+
+        /* Add this to your existing styles */
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #f8f9fa;
+            padding: 20px 0;
+            text-align: center;
+            z-index: 1000;
+        }
+        
+        /* Add some padding to the main content to prevent footer overlap */
+        main {
+            padding-bottom: 100px;
+        }
+
+        /* Add styles for the venue features */
+        .venue-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .feature {
+            flex: 1;
+            min-width: 200px;
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .feature.wide {
+            flex: 2;
+            min-width: 400px;
+        }
+
+        .feature i {
+            font-size: 2em;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .feature p {
+            margin: 5px 0;
+        }
+
+        .feature-description {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 10px;
+        }
+
+        /* Countdown styles */
+        .countdown-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .countdown-item {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            border-radius: 8px;
+            min-width: 100px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .countdown-item span {
+            display: block;
+        }
+
+        #days, #hours, #minutes, #seconds {
+            font-size: 2em;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .countdown-label {
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        /* Save the date button */
+        .save-date-container {
+            margin: 20px 0;
+        }
+
+        .save-date-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #4CAF50;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+
+        .save-date-button:hover {
+            background: #45a049;
+        }
+
+        /* Weather section */
+        .weather-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .weather-day {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            min-width: 200px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .weather-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .weather-info i {
+            font-size: 2em;
+            color: #FFA500;
+        }
+
+        .temperature {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .description {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        /* Attractions section */
+        .attractions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .attraction-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .attraction-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .attraction-card i {
+            font-size: 2em;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .attraction-card h3 {
+            margin: 10px 0;
+            color: #333;
+        }
+
+        .attraction-card p {
+            color: #666;
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+
+        /* About us section styles */
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .about-image {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .about-image:hover {
+            transform: scale(1.02);
+        }
+
+        .about-us p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .about-image {
+                max-width: 100%;
+            }
+            
+            .about-us p {
+                font-size: 1.1em;
+                padding: 0 15px;
+            }
+        }
+
+        /* Add language switcher styles */
+        .language-switch {
+            margin-left: 20px;
+        }
+
+        .language-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: background 0.3s ease;
+        }
+
+        .language-btn:hover {
+            background: var(--accent-color);
+        }
+
+        .language-btn i {
+            font-size: 1em;
+        }
+
+        @media (max-width: 768px) {
+            .language-switch {
+                margin: 15px 0;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">Kasper och Maja gifter&nbsp;sig</div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links">
+                <li><a href="#home">Hem</a></li>
+                <li><a href="#info">Information</a></li>
+                <li><a href="#venue">Plats</a></li>
+                <li><a href="#rsvp">OSA</a></li>
+                <li><a href="#speech">Tal & Uppträdande</a></li>
+                <li><a href="#schedule">Schema</a></li>
+                <li><a href="#help">Hjälp oss</a></li>
+                <li class="language-switch">
+                    <button id="language-toggle" class="language-btn">
+                        <i class="fas fa-globe"></i> EN
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="mobile-menu">
+        <ul class="mobile-nav-links">
+            <li><a href="#home">Hem</a></li>
+            <li><a href="#info">Information</a></li>
+            <li><a href="#venue">Plats</a></li>
+            <li><a href="#rsvp">OSA</a></li>
+            <li><a href="#speech">Tal & Uppträdande</a></li>
+            <li><a href="#schedule">Schema</a></li>
+            <li><a href="#help">Hjälp oss</a></li>
+            <li class="language-switch">
+                <button id="mobile-language-toggle" class="language-btn">
+                    <i class="fas fa-globe"></i> EN
+                </button>
+            </li>
+        </ul>
+    </div>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="countdown-container">
+                <div class="countdown-item">
+                    <span id="days">00</span>
+                    <span class="countdown-label">Dagar</span>
+                </div>
+                <div class="countdown-item">
+                    <span id="hours">00</span>
+                    <span class="countdown-label">Timmar</span>
+                </div>
+                <div class="countdown-item">
+                    <span id="minutes">00</span>
+                    <span class="countdown-label">Minuter</span>
+                </div>
+                <div class="countdown-item">
+                    <span id="seconds">00</span>
+                    <span class="countdown-label">Sekunder</span>
+                </div>
+            </div>
+            <h1>Kasper och Maja gifter&nbsp;sig</h1>
+            <p class="date">22 och 23 AUGUSTI 2024</p>
+            <div class="save-date-container">
+                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Kasper+och+Maja+gifter+sig&dates=20240822T130000/20240823T030000&details=Br%C3%B6llop+hos+Kasper+och+Maja+i+Harplinge&location=Tingsv%C3%A4gen+1,+Harplinge" 
+                   class="save-date-button" 
+                   target="_blank">
+                    <i class="fas fa-calendar-plus"></i> Spara datumet
+                </a>
+            </div>
+            <p class="location">Tingsvägen 1, Harplinge</p>
+            <p class="subtitle">Välkomna på två dagars firande med oss</p>
+            <p class="subtitle">Kan du bara en dag är du välkommen 23 Augusti för Huvudevent</p>
+            <a href="#rsvp" class="cta-button">OSA här</a>
+        </div>
+    </section>
+
+    <section id="info" class="section">
+        <div class="container">
+            <h2>Information</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <i class="fas fa-tshirt"></i>
+                    <h3>Dress Code</h3>
+                    <p>Klä er så att ni känner er som snyggast i festliga färgglada sommarkläder i lantlig idyll! Utomhusfest så högklackat rekommenderas ej.</p>
+                </div>
+
+                <div class="info-card">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Festen</h3>
+                    <p>"Plus en" är välkomna 22 Augusti och/eller efter kl. 21:00 den 23 augusti. Barn är välkomna under Bröllopsceremonin.</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-utensils"></i>
+                    <h3>Mat och dryck</h3>
+                    <p>Under bröllopsdagen serveras middag och det är öppen bar. Vänligen meddela eventuella matallergier eller näringsbehov i OSA-formuläret.</p>
+                </div>
+                                <div class="info-card">
+                    <i class="fas fa-gift"></i>
+                    <h3>Gåvor</h3>
+                    <p>Din närvaro är den största gåvan! Om du vill ge något gör det i form av ett konstverk du själv skapat eller något som påminner oss om dig. Vill du skänka pengar kommer dessa gå till framtida bygge av attefallshus där ni i framtiden kan bo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="venue" class="section">
+        <div class="container">
+            <h2>Plats & Vägbeskrivning</h2>
+            <div class="venue-info">
+                <div class="map">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2180.930584386882!2d12.67557687680173!3d56.74447627335055!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4651c7c889b5f8b9%3A0x7f2c93ef8f6f7a2a!2sTingsv%C3%A4gen%201%2C%20310%2041%20Harplinge!5e0!3m2!1sen!2sse!4v1707550444544!5m2!1sen!2sse"
+                        width="100%" 
+                        height="450" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe>
+                </div>
+                <div class="venue-details">
+                    <h3>Plats</h3>
+                    <p>Bröllopet äger rum hemma hos oss i trädgård och cirkustält</p>
+                    <p><strong>Adress:</strong> Tingsvägen 1, Harplinge</p>
+                    <p><strong>Kollektivtrafik:</strong> Tåg till "Halmstad Centralstation" och därifrån buss 350 eller 330 med stopp hållplats "Harplinge Per Larsgård". <a href="https://www.hlt.se" target="_blank">Hållplatser och tidtabell</a></p>
+                    <div class="venue-features">
+                        <div class="feature">
+                            <i class="fas fa-tent"></i>
+                            <p>Cirkustält med ljus och ljud</p>
+                        </div>
+
+                        <div class="feature wide">
+                            <i class="fas fa-bed"></i>
+                            <p class="feature-description">Boka boende i Harplinge eller Halmstad centrum. 30 minuter gång till Plönninge Vandrarhem. Sista bussen in till Halmstad går klockan 03.00 båda nätterna och tar ca 30 minuter. Sök boende via Airbnb eller Booking.com. Är ni rustika får ni gärna sova i tält. Taxi eller nattchaufför kan ev. ordnas.</p>
+                        </div>
+                        <div class="feature wide">
+                            <i class="fas fa-parking"></i>
+                            <p class="feature-description">Vi har begränsade parkeringsmöjligheter på tomten. Det finns möjlighet att ställa sig i byn med några minuters vandring.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="weather" class="section">
+        <div class="container">
+            <h2>Väderprognos</h2>
+            <div class="weather-container">
+                <div class="weather-day">
+                    <h3>22 Augusti</h3>
+                    <div class="weather-info">
+                        <i class="fas fa-sun"></i>
+                        <div class="weather-details">
+                            <p class="temperature">--°C</p>
+                            <p class="description">Laddar prognos...</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="weather-day">
+                    <h3>23 Augusti</h3>
+                    <div class="weather-info">
+                        <i class="fas fa-sun"></i>
+                        <div class="weather-details">
+                            <p class="temperature">--°C</p>
+                            <p class="description">Laddar prognos...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="rsvp" class="section">
+        <div class="container">
+            <h2>OSA</h2>
+            <p class="rsvp-info">Kuvertkostnad för anmälan är 200 kr eller vad du har råd med.</p>
+            <p class="rsvp-info">Överföring sker till kontonummer: 9060-7845309 Länsförsäkringar bank</p>
+            <div class="rsvp-container">
+                <form id="rsvp-form" action="https://formspree.io/f/xwpvqjge" method="POST" class="custom-form">
+                    <div class="form-group">
+                        <label for="name">Namn *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Kan du komma? *</label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="attendance" value="yes" required>
+                                <span class="radio-custom"></span>
+                                Jag kommer!
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="attendance" value="no">
+                                <span class="radio-custom"></span>
+                                Tyvärr inte
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="attendance" value="maybe">
+                                <span class="radio-custom"></span>
+                                Kanske (Vänligen meddela oss så fort som möjligt)
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Vilken/Vilka dagar kommer du? *</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="days[]" value="day1">
+                                <span class="checkbox-custom"></span>
+                                Dag 1 - Mingel och förhäng
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="days[]" value="day2">
+                                <span class="checkbox-custom"></span>
+                                Dag 2 - Bröllopsceremoni & Förbröllop
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="dietary">Kost och allergier</label>
+                        <textarea id="dietary" name="dietary" placeholder="Vänligen meddela oss om du har några matallergier eller näringsbehov"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Meddelande till brudparet</label>
+                        <textarea id="message" name="message" placeholder="Dela med dig av dina önskemål eller annan information"></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Skicka OSA</button>
+                </form>
+                <div id="form-success" class="form-message success" style="display: none;">
+                    Tack för din OSA! Vi ser fram emot att fira med dig!
+                </div>
+                <div id="form-error" class="form-message error" style="display: none;">
+                    Något gick fel. Vänligen försök igen.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+
+
+    <section id="speech" class="section">
+        <div class="container">
+            <h2>Anmäl Tal eller uppträdande</h2>
+            <div class="rsvp-container">
+                <form id="speech-form" action="https://formspree.io/f/xldbrwqn" method="POST" class="custom-form">
+                    <div class="form-group">
+                        <label for="speech-name">Namn *</label>
+                        <input type="text" id="speech-name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="speech-email">Email *</label>
+                        <input type="email" id="speech-email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="speech-type">Vad vill du göra? *</label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="speech_type" value="tal" required>
+                                <span class="radio-custom"></span>
+                                Hålla tal
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="speech_type" value="uppträdande">
+                                <span class="radio-custom"></span>
+                                Uppträda
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="speech-details">Berätta kort om vad du planerar att göra*</label>
+                        <textarea id="speech-details" name="details" required placeholder="Tex: Jag vill berätta om våra första möte, eller göra ett uppträdande för att visa min uppskattning för brudparet."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="speech-duration">Ungefärlig längd *</label>
+                        <input type="text" id="speech-duration" name="duration" required placeholder="T.ex. 5 minuter">
+                    </div>
+
+                    <button type="submit" class="submit-btn">Skicka anmälan</button>
+                </form>
+                <div id="speech-form-success" class="form-message success" style="display: none;">
+                    Tack för din anmälan! Vår toastmaster kommer att kontakta dig.
+                </div>
+                <div id="speech-form-error" class="form-message error" style="display: none;">
+                    Något gick fel. Vänligen försök igen.
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="schedule" class="section">
+        <div class="container">
+            <h2>Schema</h2>
+            <div class="timeline">
+                <div class="day-header">
+                    <h3>Dag 1 - 22 Augusti - Mingel och förhäng</h3>
+                </div>
+                <div class="timeline-item">
+                    <h3>13:00</h3>
+                    <p>Välkomna!</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>13:30</h3>
+                    <p>Välkomstdrink</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>15:00</h3>
+                    <p>Grill och festligheter</p>
+                </div>
+                
+                <div class="day-header">
+                    <h3>Dag 2 - 23 Augusti - Bröllopsceremoni & Huvudevent</h3>
+                </div>
+                <div class="timeline-item">
+                    <h3>13:00</h3>
+                    <p>Välkomstdrink</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>15:00</h3>
+                    <p>Bröllopsceremoni</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>18:00</h3>
+                    <p>Bröllopsmiddag</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>21:00</h3>
+                    <p>FEST!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="help" class="section">
+        <div class="container">
+            <h2>Om oss & Hur du kan hjälpa</h2>
+            <div class="help-content">
+                <div class="about-us">
+                    <h3>Om oss</h3>
+                    <div class="about-content">
+                        <p>Det började 2013 i ett cirkustält. Nu knyter vi ihop säcken i samma tält 10+ år senare.</p>
+                        <img src="images/TillsammansBubbel.jpg" alt="Kasper och Maja" class="about-image">
+                    </div>
+                </div>
+                <div class="help-grid">
+                    <div class="help-card">
+                        <i class="fas fa-images"></i>
+                        <h3>Bilder & Videos</h3>
+                        <p>Har du bilder eller videos på Kasper eller Maja som du verkligen gillar? Kanske där de uppträder eller ett minne du vill dela. Maila toastmaster på <a href="mailto:kasper.maja@outlook.com">kasper.maja@outlook.com</a> Se till att ev. videoklipp är kortade till lagom längd.</p>
+                    </div>
+                    <div class="help-card">
+                        <i class="fas fa-camera"></i>
+                        <h3>Fotografering</h3>
+                        <p>Kan du hjälpa oss sätta upp/sköta en iPad eller liknande där gäster under dagen kan ta selfies? Hojta eller ge annat bröllopsfotograftips!</p>
+                    </div>
+                    <div class="help-card">
+                        <i class="fas fa-utensils"></i>
+                        <h3>Mat & Servering</h3>
+                        <p>Vi behöver hjälp med nästan allt! Kan du laga mat? Blanda drinkar eller uppträda? Din kompetens är efterfrågad.</p>
+                    </div>
+                    <div class="help-card">
+                        <i class="fas fa-glass-cheers"></i>
+                        <h3>Dryck</h3>
+                        <p>Vill du fokusera helt på festen? Bidra med en platta öl, en låda bubbel eller annan dryck istället.</p>
+                    </div>
+                    <div class="help-card">
+                        <i class="fas fa-music"></i>
+                        <h3>Musik & Underhållning</h3>
+                        <p>Vi behöver hjälp med att skapa en festlig atmosfär. Om du kan spela musik, sjunga eller har andra talanger du vill dela med dig av, är du mer än välkommen!</p>
+                    </div>
+                    <div class="help-card">
+                        <i class="fas fa-hands-helping"></i>
+                        <h3>Uppstädning</h3>
+                        <p>Efter festen behöver vi hjälp med att städa upp. Om du kan stanna en stund efter festen för att hjälpa till, uppskattar vi det väldigt mycket!</p>
+                    </div>
+                </div>
+                <div class="contact-help">
+                    <p>Om du vill hjälpa till med något av ovanstående eller har andra idéer, vänligen kontakta oss direkt eller via email.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Countdown Timer
+        function updateCountdown() {
+            const weddingDate = new Date('2025-08-22T13:00:00');
+            const now = new Date();
+            const diff = weddingDate - now;
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+        }
+
+        // Update countdown every second
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Weather Forecast
+        async function fetchWeather() {
+            try {
+                const response = await fetch('https://api.openweathermap.org/data/2.5/forecast?q=Halmstad,SE&appid=YOUR_API_KEY&units=metric&lang=sv');
+                const data = await response.json();
+                
+                // Update weather for both days
+                const weatherElements = document.querySelectorAll('.weather-day');
+                weatherElements.forEach((element, index) => {
+                    const date = new Date('2024-08-22');
+                    date.setDate(date.getDate() + index);
+                    
+                    const weatherData = data.list.find(item => {
+                        const itemDate = new Date(item.dt * 1000);
+                        return itemDate.getDate() === date.getDate();
+                    });
+
+                    if (weatherData) {
+                        const temp = Math.round(weatherData.main.temp);
+                        const description = weatherData.weather[0].description;
+                        const icon = weatherData.weather[0].icon;
+
+                        element.querySelector('.temperature').textContent = `${temp}°C`;
+                        element.querySelector('.description').textContent = description;
+                        element.querySelector('i').className = `fas fa-${getWeatherIcon(icon)}`;
+                    }
+                });
+            } catch (error) {
+                console.error('Error fetching weather:', error);
+            }
+        }
+
+        function getWeatherIcon(iconCode) {
+            const iconMap = {
+                '01d': 'sun',
+                '01n': 'moon',
+                '02d': 'cloud-sun',
+                '02n': 'cloud-moon',
+                '03d': 'cloud',
+                '03n': 'cloud',
+                '04d': 'cloud',
+                '04n': 'cloud',
+                '09d': 'cloud-rain',
+                '09n': 'cloud-rain',
+                '10d': 'cloud-sun-rain',
+                '10n': 'cloud-moon-rain',
+                '11d': 'bolt',
+                '11n': 'bolt',
+                '13d': 'snowflake',
+                '13n': 'snowflake',
+                '50d': 'smog',
+                '50n': 'smog'
+            };
+            return iconMap[iconCode] || 'sun';
+        }
+
+        // Fetch weather data
+        fetchWeather();
+
+        // Lazy loading implementation
+        document.addEventListener("DOMContentLoaded", function() {
+            const lazyImages = document.querySelectorAll("img[loading='lazy']");
+            
+            if ("IntersectionObserver" in window) {
+                const imageObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            img.src = img.dataset.src;
+                            img.classList.add("loaded");
+                            observer.unobserve(img);
+                        }
+                    });
+                });
+
+                lazyImages.forEach(img => imageObserver.observe(img));
+            }
+        });
+
+        // Add translations object
+        const translations = {
+            'sv': {
+                // Navigation
+                'Hem': 'Hem',
+                'Information': 'Information',
+                'Plats': 'Plats',
+                'OSA': 'OSA',
+                'Tal & Uppträdande': 'Tal & Uppträdande',
+                'Schema': 'Schema',
+                'Hjälp oss': 'Hjälp oss',
+                
+                // Hero section
+                'Kasper och Maja gifter sig': 'Kasper och Maja gifter sig',
+                '22 och 23 AUGUSTI 2024': '22 och 23 AUGUSTI 2024',
+                'Spara datumet': 'Spara datumet',
+                'Tingsvägen 1, Harplinge': 'Tingsvägen 1, Harplinge',
+                'Under två dagar firar vi att vi gifter oss': 'Under två dagar firar vi att vi gifter oss',
+                'Kan du bara en dag är du välkommen 23 Augusti för Huvudevent': 'Kan du bara en dag är du välkommen 23 Augusti för Huvudevent',
+                'OSA här': 'OSA här',
+                
+                // Information section
+                'Dress Code': 'Dress Code',
+                'Klä er så att ni känner er som snyggast i festliga färgglada sommarkläder i lantlig idyll! Utomhusfest så högklackat rekommenderas ej.': 'Klä er så att ni känner er som snyggast i festliga färgglada sommarkläder i lantlig idyll! Utomhusfest så högklackat rekommenderas ej.',
+                'Festen': 'Festen',
+                '"Plus en" är välkomna 22 Augusti och/eller efter kl. 21:00 den 23 augusti. Barn är välkomna under Bröllopsceremonin.': '"Plus en" är välkomna 22 Augusti och/eller efter kl. 21:00 den 23 augusti. Barn är välkomna under Bröllopsceremonin.',
+                'Mat och dryck': 'Mat och dryck',
+                'Under bröllopsdagen serveras middag och det är öppen bar. Vänligen meddela eventuella matallergier eller näringsbehov i OSA-formuläret.': 'Under bröllopsdagen serveras middag och det är öppen bar. Vänligen meddela eventuella matallergier eller näringsbehov i OSA-formuläret.',
+                'Gåvor': 'Gåvor',
+                'Din närvaro är den största gåvan! Om du vill ge något gör det i form av ett konstverk du själv skapat eller något som påminner oss om dig. Vill du skänka pengar kommer dessa gå till framtida bygge av attefallshus där ni i framtiden kan bo.': 'Din närvaro är den största gåvan! Om du vill ge något gör det i form av ett konstverk du själv skapat eller något som påminner oss om dig. Vill du skänka pengar kommer dessa gå till framtida bygge av attefallshus där ni i framtiden kan bo.',
+                
+                // Venue section
+                'Plats & Vägbeskrivning': 'Plats & Vägbeskrivning',
+                'Plats': 'Plats',
+                'Bröllopet äger rum hemma hos oss i trädgård och cirkustält.': 'Bröllopet äger rum hemma hos oss i trädgård och cirkustält.',
+                'Adress:': 'Adress:',
+                'Kollektivtrafik:': 'Kollektivtrafik:',
+                'Hållplatser och tidtabell': 'Hållplatser och tidtabell',
+                
+                // RSVP section
+                'Kuvertkostnad för anmälan är 200 kr eller vad du har råd med.': 'Kuvertkostnad för anmälan är 200 kr eller vad du har råd med.',
+                'Överföring sker till kontonummer: 9060-7845309 Länsförsäkringar bank': 'Överföring sker till kontonummer: 9060-7845309 Länsförsäkringar bank',
+                'Namn *': 'Namn *',
+                'Email *': 'Email *',
+                'Kan du komma? *': 'Kan du komma? *',
+                'Jag kommer!': 'Jag kommer!',
+                'Tyvärr inte': 'Tyvärr inte',
+                'Kanske (Vänligen meddela oss så fort som möjligt)': 'Kanske (Vänligen meddela oss så fort som möjligt)',
+                'Vilken/Vilka dagar kommer du? *': 'Vilken/Vilka dagar kommer du? *',
+                'Dag 1 - Mingel och förhäng': 'Dag 1 - Mingel och förhäng',
+                'Dag 2 - Bröllopsceremoni & Förbröllop': 'Dag 2 - Bröllopsceremoni & Förbröllop',
+                'Kost och allergier': 'Kost och allergier',
+                'Meddelande till brudparet': 'Meddelande till brudparet',
+                'Skicka OSA': 'Skicka OSA',
+                
+                // Help section
+                'Om oss & Hur du kan hjälpa': 'Om oss & Hur du kan hjälpa',
+                'Om oss': 'Om oss',
+                'Det började 2013 i ett cirkustält. Nu knyter vi ihop säcken i samma tält 10+ år senare.': 'Det började 2013 i ett cirkustält. Nu knyter vi ihop säcken i samma tält 10+ år senare.',
+                'Bilder & Videos': 'Bilder & Videos',
+                'Fotografering': 'Fotografering',
+                'Mat & Servering': 'Mat & Servering',
+                'Dryck': 'Dryck',
+                'Musik & Underhållning': 'Musik & Underhållning',
+                'Uppstädning': 'Uppstädning',
+                
+                // Footer
+                'Hemsidan kan komma att uppdateras med mer information senare': 'Hemsidan kan komma att uppdateras med mer information senare',
+                'Vi ser fram emot att fira med dig!': 'Vi ser fram emot att fira med dig!',
+                'För frågor maila kasper.maja@outlook.com': 'För frågor maila kasper.maja@outlook.com'
+            },
+            'en': {
+                // Navigation
+                'Hem': 'Home',
+                'Information': 'Information',
+                'Plats': 'Venue',
+                'OSA': 'RSVP',
+                'Tal & Uppträdande': 'Speeches & Performances',
+                'Schema': 'Schedule',
+                'Hjälp oss': 'Help Us',
+                
+                // Hero section
+                'Kasper och Maja gifter sig': 'Kasper and Maja are getting married',
+                '22 och 23 AUGUSTI 2024': '22nd and 23rd AUGUST 2024',
+                'Spara datumet': 'Save the date',
+                'Tingsvägen 1, Harplinge': 'Tingsvägen 1, Harplinge',
+                'Under två dagar firar vi att vi gifter oss': 'We are celebrating our wedding over two days',
+                'Kan du bara en dag är du välkommen 23 Augusti för Huvudevent': 'If you can only attend one day, you are welcome on August 23rd for the Main Event',
+                'OSA här': 'RSVP here',
+                
+                // Information section
+                'Dress Code': 'Dress Code',
+                'Klä er så att ni känner er som snyggast i festliga färgglada sommarkläder i lantlig idyll! Utomhusfest så högklackat rekommenderas ej.': 'Dress in your most festive summer attire for a countryside celebration! High heels are not recommended for the outdoor event.',
+                'Festen': 'The Celebration',
+                '"Plus en" är välkomna 22 Augusti och/eller efter kl. 21:00 den 23 augusti. Barn är välkomna under Bröllopsceremonin.': '"Plus ones" are welcome on August 22nd and/or after 9:00 PM on August 23rd. Children are welcome during the wedding ceremony.',
+                'Mat och dryck': 'Food and Drinks',
+                'Under bröllopsdagen serveras middag och det är öppen bar. Vänligen meddela eventuella matallergier eller näringsbehov i OSA-formuläret.': 'Dinner will be served during the wedding day with an open bar. Please inform us of any dietary restrictions or allergies in the RSVP form.',
+                'Gåvor': 'Gifts',
+                'Din närvaro är den största gåvan! Om du vill ge något gör det i form av ett konstverk du själv skapat eller något som påminner oss om dig. Vill du skänka pengar kommer dessa gå till framtida bygge av attefallshus där ni i framtiden kan bo.': 'Your presence is the greatest gift! If you wish to give something, we would love a piece of art you created or something that reminds us of you. If you prefer to contribute money, it will go towards building a future guest house where you can stay.',
+                
+                // Venue section
+                'Plats & Vägbeskrivning': 'Venue & Directions',
+                'Plats': 'Venue',
+                'Bröllopet äger rum hemma hos oss i trädgård och cirkustält.': 'The wedding will take place at our home in the garden and circus tent.',
+                'Adress:': 'Address:',
+                'Kollektivtrafik:': 'Public Transport:',
+                'Hållplatser och tidtabell': 'Bus stops and timetable',
+                
+                // RSVP section
+                'Kuvertkostnad för anmälan är 200 kr eller vad du har råd med.': 'The RSVP fee is 200 SEK or what you can afford.',
+                'Överföring sker till kontonummer: 9060-7845309 Länsförsäkringar bank': 'Transfer to account number: 9060-7845309 Länsförsäkringar bank',
+                'Namn *': 'Name *',
+                'Email *': 'Email *',
+                'Kan du komma? *': 'Can you attend? *',
+                'Jag kommer!': 'I will attend!',
+                'Tyvärr inte': 'Unfortunately not',
+                'Kanske (Vänligen meddela oss så fort som möjligt)': 'Maybe (Please let us know as soon as possible)',
+                'Vilken/Vilka dagar kommer du? *': 'Which day(s) will you attend? *',
+                'Dag 1 - Mingel och förhäng': 'Day 1 - Mingling and Pre-party',
+                'Dag 2 - Bröllopsceremoni & Förbröllop': 'Day 2 - Wedding Ceremony & Reception',
+                'Kost och allergier': 'Dietary requirements',
+                'Meddelande till brudparet': 'Message to the couple',
+                'Skicka OSA': 'Send RSVP',
+                
+                // Help section
+                'Om oss & Hur du kan hjälpa': 'About Us & How You Can Help',
+                'Om oss': 'About Us',
+                'Det började 2013 i ett cirkustält. Nu knyter vi ihop säcken i samma tält 10+ år senare.': 'It all started in 2013 in a circus tent. Now we\'re tying the knot in the same tent 10+ years later.',
+                'Bilder & Videos': 'Photos & Videos',
+                'Fotografering': 'Photography',
+                'Mat & Servering': 'Food & Service',
+                'Dryck': 'Drinks',
+                'Musik & Underhållning': 'Music & Entertainment',
+                'Uppstädning': 'Cleanup',
+                
+                // Footer
+                'Hemsidan kan komma att uppdateras med mer information senare': 'The website may be updated with more information later',
+                'Vi ser fram emot att fira med dig!': 'We look forward to celebrating with you!',
+                'För frågor maila kasper.maja@outlook.com': 'For questions, email kasper.maja@outlook.com'
+            }
+        };
+
+        // Language switcher functionality
+        let currentLanguage = 'sv';
+
+        function updateLanguage(lang) {
+            try {
+                console.log(`Switching language to: ${lang}`);
+                currentLanguage = lang;
+                
+                // Update all translatable elements
+                document.querySelectorAll('[data-translate]').forEach(element => {
+                    const key = element.getAttribute('data-translate');
+                    if (translations[lang] && translations[lang][key]) {
+                        element.textContent = translations[lang][key];
+                    } else {
+                        console.warn(`Translation missing for key: ${key} in language: ${lang}`);
+                    }
+                });
+                
+                // Update language button text
+                document.querySelectorAll('.language-btn').forEach(btn => {
+                    btn.innerHTML = `<i class="fas fa-globe"></i> ${lang === 'sv' ? 'EN' : 'SV'}`;
+                });
+
+                // Update form placeholders
+                const formElements = document.querySelectorAll('input[placeholder], textarea[placeholder]');
+                formElements.forEach(element => {
+                    const key = element.getAttribute('placeholder');
+                    if (translations[lang] && translations[lang][key]) {
+                        element.setAttribute('placeholder', translations[lang][key]);
+                    }
+                });
+
+                // Store language preference
+                localStorage.setItem('preferredLanguage', lang);
+                console.log('Language update completed successfully');
+            } catch (error) {
+                console.error('Error updating language:', error);
+            }
+        }
+
+        // Add event listeners to language buttons with error handling
+        document.querySelectorAll('.language-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                try {
+                    e.preventDefault();
+                    const newLang = currentLanguage === 'sv' ? 'en' : 'sv';
+                    updateLanguage(newLang);
+                } catch (error) {
+                    console.error('Error in language button click handler:', error);
+                }
+            });
+        });
+
+        // Initialize language based on user preference or browser language
+        document.addEventListener('DOMContentLoaded', () => {
+            try {
+                // Check for stored preference
+                const storedLang = localStorage.getItem('preferredLanguage');
+                if (storedLang) {
+                    updateLanguage(storedLang);
+                } else {
+                    // Check browser language
+                    const browserLang = navigator.language.split('-')[0];
+                    if (browserLang === 'en') {
+                        updateLanguage('en');
+                    }
+                }
+
+                // Add data-translate attributes to all translatable elements
+                Object.keys(translations['sv']).forEach(key => {
+                    const elements = document.querySelectorAll(`:not(script):not(style):not(meta):not(link):not(title):not(head):not(html):not(body):not([data-translate])`);
+                    elements.forEach(element => {
+                        if (element.textContent.trim() === key) {
+                            element.setAttribute('data-translate', key);
+                        }
+                    });
+                });
+
+                console.log('Language initialization completed');
+            } catch (error) {
+                console.error('Error during language initialization:', error);
+            }
+        });
+    </script>
+</body>
+</html> 
